@@ -5,12 +5,12 @@ import { Button, Input, InputGroup, Label } from "reactstrap";
 import { isAuth, setAuth } from "../../utils/globalVariables";
 import { useHistory } from "react-router-dom";
 
-function Index() {
+function Index(props) {
   const history = useHistory();
 
   useEffect(() => {
     if (isAuth()) {
-      history.push("/inicio");
+      history.push("/tasks");
     }
   }, []);
 
@@ -34,6 +34,7 @@ function Index() {
         })}
         onSubmit={(values) => {
           setAuth(values);
+          props.change(true);
           history.push("/inicio");
         }}
       >

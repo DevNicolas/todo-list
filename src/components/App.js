@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../App.css";
 import Login from "./Login/index";
 import TodoList from "./Todo/TodoList";
@@ -12,6 +12,13 @@ import {
 import { isAuth, closeSesion } from "../utils/globalVariables";
 
 function App() {
+  useEffect(() => {
+    if (isAuth()) {
+      setIsloggedIn(isAuth());
+    }
+  }, []);
+  const [isLoggedIn, setIsloggedIn] = useState(false);
+
   const redirectUser = () => {
     return <Redirect from="/inicio" to="/login" />;
   };
@@ -19,7 +26,7 @@ function App() {
   const timeOut = () => {
     time = setTimeout(() => {
       confirmation();
-    }, 4000);
+    }, 40000);
   };
   const confirmation = () => {
     const choose = window.confirm("¿deseas continuar en la pagina?");
@@ -28,17 +35,17 @@ function App() {
     } else {
       clearTimeout(time);
       closeSesion();
+      setIsloggedIn(false);
     }
   };
-  if (isAuth()) {
+  if (isLoggedIn) {
     timeOut();
   }
   return (
     <div className="App">
       <Router>
         <div>
-          {redirectUser()}
-          {isAuth() ? (
+          {isLoggedIn ? (
             <nav>
               <ul>
                 <li>
@@ -52,41 +59,25 @@ function App() {
                 </li>
               </ul>
             </nav>
-          ) : null}
+          ) : (
+            redirectUser()
+          )}
 
           <Switch>
-            <Route path="/login" component={Auth} />
-            <Route path="/tasks" component={Tasks} />
-            <Route path="/users" component={Users} />
-            <Route path="/inicio" component={Home} />
+            <Route
+              path="/login"
+              component={() => (
+                <Login change={(isLoggedIn) => setIsloggedIn(isLoggedIn)} />
+              )}
+            />
+            <Route path="/tasks" component={TodoList} />
+            {/*    <Route path="/users" component={Users} />
+            <Route path="/inicio" component={Home} /> */}
           </Switch>
         </div>
       </Router>
     </div>
   );
-}
-function Auth() {
-  return (
-    <div>
-      <h2>login</h2>
-      <Login />
-    </div>
-  );
-}
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function Tasks() {
-  return (
-    <div>
-      <TodoList />
-    </div>
-  );
-}
-
-function Users() {
-  return <h2>Users</h2>;
 }
 
 export default App;

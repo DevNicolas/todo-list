@@ -40,19 +40,33 @@
 
 .todo-button.edit {
   background-color: #16d0a1;
-  padding: 16px 22px;
+  position: fixed;
+  top: 7.5%;
+  left: 69%;
 }
 .todo-button.edit:active {
   background-color: #16d0a1;
-  padding: 16px 22px;
 }
 .todo-button.edit:focus {
   background-color: #16d0a1;
-  padding: 16px 22px;
 }
 .todo-button.edit:hover {
   background-color: #16d0a1;
-  padding: 16px 22px;
+}
+.todo-button.update {
+  background-color: #16d0a1;
+  position: fixed;
+  top: 14.7%;
+  left: 70%;
+}
+.todo-button.update:active {
+  background-color: #16d0a1;
+}
+.todo-button.update:focus {
+  background-color: #16d0a1;
+}
+.todo-button.update:hover {
+  background-color: #16d0a1;
 }
 .tasks {
   width: 100%;
@@ -103,4 +117,73 @@ small {
   background-color: #16d0a1 !important;
   padding: 16px 22px !important;
   margin-top: 10px;
+}
+@media (max-width: 580px) {
+  .todo-component {
+    position: absolute;
+    top: 30%;
+  }
+  .todo-input.edit {
+    width: 90%;
+    margin-left: 5%;
+  }
+  .todo-button.edit {
+    left: 65%;
+    top: 58.7%;
+    position: inherit;
+  }
+  .todo-button.update {
+    left: 65%;
+    top: 69.5%;
+    position: inherit;
+  }
+  .todo-all {
+    margin-left: 5%;
+    width: 90%;
+    margin-top: 2px;
+  }
+  .btn-limpiar {
+    padding: 10px 15px !important;
+  }
+  .icons {
+    position: absolute;
+  }
+}
+@media (min-width: 600px) and (max-width: 1024px) {
+  .todo-component h1 {
+    font-size: 20px;
+    margin-left: 120px;
+  }
+  .todo-input.edit {
+    width: 70%;
+    margin-left: 27% !important;
+  }
+  .todo-button.edit {
+    position: inherit;
+    margin-left: 110px;
+  }
+  .todo-button.update {
+    position: inherit;
+    margin-left: 110px;
+  }
+  .todo-all {
+    margin-left: 27% !important;
+    width: 70%;
+  }
+  .icons {
+    position: absolute;
+    margin-left: 80px;
+  }
+  .btn-limpiar {
+    margin-left: 100px;
+    padding: 10px 15px !important;
+  }
+}
+@media (min-width: 1200px) {
+  .todo-button.edit {
+    position: inherit;
+  }
+  .todo-button.update {
+    position: inherit;
+  }
 }

@@ -4,6 +4,9 @@ import * as Yup from "yup";
 import { Button, Input, InputGroup, Label } from "reactstrap";
 import { isAuth, setAuth } from "../../utils/globalVariables";
 import { useHistory } from "react-router-dom";
+import { BiUser, BiLogIn } from "react-icons/bi";
+import { AiOutlineMail } from "react-icons/ai";
+import { RiLockPasswordFill } from "react-icons/ri";
 
 function Index(props) {
   const history = useHistory();
@@ -40,8 +43,12 @@ function Index(props) {
       >
         {({ values, handleChange, handleBlur, isSubmitting }) => (
           <Form>
-            <h1>Inicia Sesion</h1>
-            <Label htmlFor="email">Email:</Label>
+            <h1>
+              Inicia Sesion <BiUser />
+            </h1>
+            <Label htmlFor="email">
+              Email <AiOutlineMail />:{" "}
+            </Label>
             <InputGroup>
               <Input
                 id="email"
@@ -59,7 +66,9 @@ function Index(props) {
                 )}
               </ErrorMessage>
             </InputGroup>
-            <Label htmlFor="password">password:</Label>
+            <Label htmlFor="password">
+              password <RiLockPasswordFill />:
+            </Label>
             <InputGroup>
               <Input
                 id="password"
@@ -82,9 +91,9 @@ function Index(props) {
               type="submit"
               className="btn btn-primary"
               disabled={isSubmitting}
-              style={{ cursor: "pointer" }}
+              style={{ cursor: "pointer", marginTop: "10px" }}
             >
-              Ingresar
+              Ingresar <BiLogIn />
             </Button>
           </Form>
         )}

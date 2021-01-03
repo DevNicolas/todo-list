@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ServiceInteractor from "../../services/ServiceInteractor";
+import { AiFillCheckCircle } from "react-icons/ai";
+import { ImCross } from "react-icons/im";
+import { Spinner } from "reactstrap";
+import "./index.css";
 function Index() {
   const Interactor = new ServiceInteractor();
   const [users, setUsers] = useState("");
@@ -16,18 +20,36 @@ function Index() {
     });
   }
   return (
-    <div>
+    <div className="users-responsive">
+      <h1>Usuarios</h1>
       {users.length !== 0 ? (
         users.map((info) => (
-          <div key={info.id}>
-            <h2>Nombre: {info.nombre}</h2>
-            <h2>Apellido: {info.apellidos}</h2>
-            <h2>Telefono:{info.telefono}</h2>
-            <h2>Correo: {info.emial}</h2>
+          <div
+            key={info.id}
+            className="card"
+            style={{ width: "50%", left: "25%", textAlign: "start" }}
+          >
+            <div className="card-text">
+              <h2>Nombre: {info.nombre}</h2>
+              <h2>Apellido: {info.apellidos}</h2>
+              <h2>Telefono:{info.telefono}</h2>
+              <h2>Correo: {info.emial}</h2>
+              <h2>
+                Estado:{" "}
+                {info.estado ? (
+                  <AiFillCheckCircle color="green" />
+                ) : (
+                  <ImCross color="red" />
+                )}
+              </h2>
+            </div>
           </div>
         ))
       ) : (
-        <p>estamos cargando los usuarios</p>
+        <>
+          <Spinner color="success" />
+          <h2>Cargando....</h2>
+        </>
       )}
     </div>
   );

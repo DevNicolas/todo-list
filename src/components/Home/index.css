@@ -10,3 +10,29 @@
   width: 80%;
   margin-top: -28px;
 }
+@media (max-width: 580px) {
+  .home-responsive {
+    position: absolute;
+    top: 30%;
+  }
+  .nav-user {
+    font-size: 13px !important;
+    margin-top: 22px;
+  }
+  .image-home {
+    width: 110%;
+  }
+}
+@media (min-width: 600px) and (max-width: 1024px) {
+  .nav-user {
+    font-size: 20px;
+    margin-top: 4px;
+  }
+  .image-home {
+    width: 100%;
+    margin-left: 65px;
+  }
+  .card h1 {
+    margin-left: 75px;
+  }
+}

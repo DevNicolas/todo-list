@@ -10,7 +10,7 @@ function Index(props) {
 
   useEffect(() => {
     if (isAuth()) {
-      history.push("/tasks");
+      history.push("/inicio");
     }
   }, []);
 
@@ -38,18 +38,11 @@ function Index(props) {
           history.push("/inicio");
         }}
       >
-        {({
-          values,
-          handleChange,
-          handleBlur,
-          dirty,
-          isSubmitting,
-          handleSubmit,
-          handleReset,
-        }) => (
+        {({ values, handleChange, handleBlur, isSubmitting }) => (
           <Form>
+            <h1>Inicia Sesion</h1>
+            <Label htmlFor="email">Email:</Label>
             <InputGroup>
-              <Label htmlFor="email">Email:</Label>
               <Input
                 id="email"
                 name="email"
@@ -66,8 +59,8 @@ function Index(props) {
                 )}
               </ErrorMessage>
             </InputGroup>
+            <Label htmlFor="password">password:</Label>
             <InputGroup>
-              <Label htmlFor="password">password:</Label>
               <Input
                 id="password"
                 name="password"
@@ -85,9 +78,9 @@ function Index(props) {
               </ErrorMessage>
             </InputGroup>
             <Button
+              color="primary"
               type="submit"
-              className="px-4 btn-purple-irys"
-              block
+              className="btn btn-primary"
               disabled={isSubmitting}
               style={{ cursor: "pointer" }}
             >

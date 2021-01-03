@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Input, Form } from "reactstrap";
+import "./index.css";
 
 function TodoForm(props) {
   const inputRef = useRef(null);
@@ -15,13 +16,13 @@ function TodoForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     props.onSubmit({
-      id: Math.floor(Math.random() * 100),
+      id: Math.floor(Math.random() * 100), //id aleatoreo para cada tarea
       task: input,
     });
     setInput("");
   };
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className="todo-form">
       {props.edit ? (
         <>
           <Input
@@ -31,8 +32,11 @@ function TodoForm(props) {
             name="task"
             onChange={handleChange}
             ref={inputRef}
+            className="todo-input edit"
           />
-          <Button>Actualizar</Button>
+          <Button onClick={handleSubmit} className="todo-button edit">
+            Actualizar
+          </Button>
         </>
       ) : (
         <>
@@ -43,8 +47,11 @@ function TodoForm(props) {
             name="task"
             onChange={handleChange}
             ref={inputRef}
+            className="todo-input edit"
           />
-          <Button>Añadir Tarea</Button>
+          <Button onClick={handleSubmit} className="todo-button edit">
+            Añadir Tarea
+          </Button>
         </>
       )}
     </Form>

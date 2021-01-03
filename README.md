@@ -2,7 +2,7 @@
 
 Este proyecto consiste en una app de TODO List, utiliza expresiones regulares para validar correo y contraseña, ademas de eliminar espacios de mas a la hora de agregar una tarea. Permite al usuario agregar, eliminar, editar y finalizar cada una de las tareas. asi mismo la app cuenta con un navbar donde el usuario puede ver una notificacion de las tareas que tiene. Se usa el localStorage para validar inicio de sesion y guardado de datos en cache para las tareas las cuales se eliminan cuando el usuario cierra sesion. 
 
-#comandos:
+# comandos importantes:
 
 1. Debes Correr npm install para instalar las dependencias necesarias del proyecto.
 2. Finalizada la instalacion puedes correr npm start para iniciar el proyecto el cual se iniciara en el puerto 3000 por defento
